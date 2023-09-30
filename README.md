@@ -1,16 +1,41 @@
-# DSVendas
-[![NPM](https://img.shields.io/npm/l/react)](https://github.com/LeandroOliveiraSouza/DSVendas/blob/main/LICENSE) 
+# DSPesquisa
+[![NPM](https://img.shields.io/npm/l/react)](https://github.com/LeandroOliveiraSouza/DSPesquisa/blob/main/LICENSE) 
 
 # Sobre o projeto
-DSVendas é uma aplicação full stack web, com leiaute responsivo, usando os breakpoints do bootstrap. Construída durante a semana Spring React, organizado pela [DevSuperior](https://devsuperior.com "Site da DevSuperior").
+DSPesquisa é uma aplicação full stack web (leiaute responsivo com breakpoints do bootstrap) e mobile. Construída durante a semana Spring React, organizado pela [DevSuperior](https://devsuperior.com "Site da DevSuperior").
 
-Seu objetivo é demonstrar duas visões, gráfica e por tabela, sobre um conjunto de informações sobre os vendedores. A tabela é formada por 20 linhas com dados diversos, disponíveis no banco H2 e Postgres, enquanto que os dois gráficos retornam informações sobre regras definidas no código-fonte. A taxa de sucesso ou efetividade (gráfico de barras) dos vendedores, compara os clientes visitados com aqueles que fecharam o contrato/venda. Já a Participação nas vendas (gráfico de rosca) leva em consideração a participação de cada vendedor em relação ao total de vendas. Os dados dos gráficos sendo estáticos, não acompanham a paginação da tabela, mas a tabela altera as informações a cada interação. 
+Composto por duas etapas, a primeira acontece em um aplicativo mobile onde os usuários respondem a pesquisa de preferência de games. A partir das respostas do usuário na aplicação mobile, temos a segunda etapa onde os dados armazenados no banco de dados são apresentados em uma SPA (single page applications) Web, em duas visões, sendo uma gráfica e outra em gride. Os dados do gride estão com paginação.
 
 ## Layout web
-![Web Dashboard](https://github.com/LeandroOliveiraSouza/assets/blob/main/dsvendas-dashboard.png)![Web Tabela](https://github.com/LeandroOliveiraSouza/assets/blob/main/dsvendas-tabela-rodape.png)
+![Web Home](https://github.com/LeandroOliveiraSouza/assets/blob/main/dspesquisa-web-intro.png) 
+![Web Lista](https://github.com/LeandroOliveiraSouza/assets/blob/main/dspesquisa-web-lista.png)
+![Web Gráficos](https://github.com/LeandroOliveiraSouza/assets/blob/main/dspesquisa-web-graficos.png)
 
-## Modelo conceitual
-![Modelo Conceitual](https://github.com/LeandroOliveiraSouza/assets/blob/main/modelo-dominio-dsvendas.png)
+## Layout mobile
+![Web Home](https://github.com/LeandroOliveiraSouza/assets/blob/main/dspesquisa-iphone-8-plus-intro.png) ![Web Formulário](https://github.com/LeandroOliveiraSouza/assets/blob/main/dspesquisa-iphone-8-plus-form.png)
+
+## Construção da aplicação
+A etapa de análise envolveu a definição das premissas e onjetivo e construção de um wireframe que culminou com modelo figma do projeto. Com base nesse desenho teve inicio a especificação de casos de uso, usando o diagrama da UML e o modelo conceitual seguiu no ASTA por diagrama de classes.
+
+### Diagrama de caso de uso
+#### CADASTRAR REGISTRO DA PESQUISA:
+1. [OUT] O sistema informa os nomes de todos os games para o respondente, ordenados.
+2. [IN] O respondente informa nome, idade e jogo.
+
+#### LISTAR REGISTRO DE PESQUISA:
+1. [OUT] O sistema informa uma lista dos registros de pesquisa contendo cada um o instante, nome, idade, plataforma, gênero e título do game, ordenada pelo instante.
+2. [IN] O operador do sistema ewb, informa, opcionalmente, uma data incial e data final para filtrar os dados.
+3. [OUT] O sistema apresenta a listagem atualizada.
+
+### Modelo de dados
+#### Desnormalizados
+![Modelo sem normalização](https://github.com/LeandroOliveiraSouza/assets/blob/main/dspesquisa-dados-desnormalizados.png)
+
+#### Normalizados
+![Modelo com normalização](https://github.com/LeandroOliveiraSouza/assets/blob/main/dspesquisa-dados-normalizados.png)
+
+### Modelo conceitual
+![Modelo Conceitual](https://github.com/LeandroOliveiraSouza/assets/blob/main/dspesquisa-modelo-conceitual.png)
 
 ## Padrão camadas no backend
 ![Avaliacoes](https://github.com/LeandroOliveiraSouza/assets/blob/main/backend-camadas.png)
@@ -21,9 +46,6 @@ Seu objetivo é demonstrar duas visões, gráfica e por tabela, sobre um conjunt
 - Acesso a banco de dados
 - Estruturar o back end no padrão camadas
   - repositories
-    - Buscas agrupadas (GROUP BY)
-      - Total de vendas por vendedor
-      - Taxa de sucesso por vendedor
   - DTO's
   - service
   - controller
@@ -31,7 +53,7 @@ Seu objetivo é demonstrar duas visões, gráfica e por tabela, sobre um conjunt
 - Consulta paginada de vendas
   - Pageable
   - page, size, sort 
-- Consultas agrupadas para gráficos
+- Consultas agrupadas por gráficos
 - Perfis de projeto: test, dev, prod
 
 
@@ -50,7 +72,6 @@ Seu objetivo é demonstrar duas visões, gráfica e por tabela, sobre um conjunt
   - React Router DOM
   - Axios
   - Apex Charts
-  - Date-fns
 
 # Tecnologias utilizadas
 ## Back end
@@ -63,7 +84,6 @@ Seu objetivo é demonstrar duas visões, gráfica e por tabela, sobre um conjunt
 - Maven
 ## Front end
 - HTML / CSS / JavaScript / TypeScript
-- Bootstrap (5.1.3)
 - ReactTS (React-App)
 - React Router
 - AXIOS
@@ -84,17 +104,14 @@ git clone https://github.com/LeandroSouzaOliveira/dsmovie/backend
 ```
 
 ## Front end web
-Pré-requisitos: yarn / react
+Pré-requisitos: npm ou yarn / react
 
 ```bash
 # clonar repositório
 git clone https://github.com/LeandroSouzaOliveira/dsmovie/frontend
 
-# instalar dependências
-yarn
-
 # executar o projeto
-yarn start
+npm run start
 ```
 
 # Agradecimentos
