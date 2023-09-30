@@ -12,8 +12,8 @@ export const pieOptions = {
   },
   dataLabels: {
     enabled: true,
-    offsetX: 100,
-    offsetY: 100,
+    offsetX: 150,
+    offsetY: 150,
     style: {
       colors: ["#a8dadc", "#ed7947", "#00D4FF", "#ffd6a5"],
       fontSize: "20px",
